@@ -10,7 +10,7 @@ export const generateMocks = () => {
     mocks.posts = mocks.posts.map(() => {
         const post = generateMock(PostSchema, {
             stringMap: {
-                message: () => faker.lorem.text(),
+                message: () => faker.lorem.paragraph(),
             },
         });
 
@@ -23,7 +23,7 @@ export const generateMocks = () => {
         generateMock(CommentSchema, {
             stringMap: {
                 id: () => faker.string.uuid(),
-                message: () => faker.lorem.text(),
+                message: () => faker.lorem.paragraph(),
                 postId: () => faker.helpers.arrayElement(postIds),
             },
         }),
