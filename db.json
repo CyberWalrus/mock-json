@@ -1,8 +1,5 @@
 {
     "$scheme": "./scheme.json",
-    "profile": {
-        "name": "typicode"
-    },
     "comments": [
         {
             "id": "421c05ab-9bb8-4158-901c-c2bbe4f3a5eb",
