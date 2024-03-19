@@ -1,20 +1,27 @@
 import { z } from 'zod';
 
-export const PostSchema = z.object({
-    id: z.string().uuid(),
-    message: z.string(),
+export const PriceListSchema = z.record(z.string(), z.string());
+
+export type PriceList = z.infer<typeof PriceListSchema>;
+
+export const ShopsSchema = z.object({
+    coordinate: z.number().array().length(2),
+    id: z.string(),
+    name: z.string(),
+    priceList: PriceListSchema,
 });
 
-export const CommentSchema = z.object({
-    id: z.string().uuid(),
-    message: z.string(),
-    postId: z.string().uuid(),
+export const ProductSchema = z.object({
+    description: z.string(),
+    id: z.string(),
+    info: z.string(),
+    name: z.string(),
 });
 
 export const MockSchema = z
     .object({
         $schema: z.string(),
-        comments: z.array(CommentSchema),
-        posts: z.array(PostSchema),
+        products: z.array(ProductSchema),
+        shops: z.array(ShopsSchema),
     })
     .describe('mock json schema');
